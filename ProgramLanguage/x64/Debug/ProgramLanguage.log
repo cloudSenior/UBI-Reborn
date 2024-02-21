@@ -1,0 +1,12 @@
+﻿  main.cc
+E:\C++ Projects\Tests\ProgramLanguage\ProgramLanguage\Value.hh(31,26): warning C4101: err: неиспользованная локальная переменная
+  (компиляция исходного файла "main.cc")
+  
+E:\C++ Projects\Tests\ProgramLanguage\ProgramLanguage\BinaryExpression.hh(51,22): warning C4244: инициализация: преобразование "double" в "int", возможна потеря данных
+  (компиляция исходного файла "main.cc")
+  
+E:\C++ Projects\Tests\ProgramLanguage\ProgramLanguage\BinaryExpression.hh(45): warning C4715: BinaryExpression::numberEval: значение возвращается не при всех путях выполнения
+E:\C++ Projects\Tests\ProgramLanguage\ProgramLanguage\BinaryExpression.hh(66): warning C4715: BinaryExpression::stringEval: значение возвращается не при всех путях выполнения
+E:\C++ Projects\Tests\ProgramLanguage\ProgramLanguage\Interpreter.hh(108): warning C4715: Interpreter::primary: значение возвращается не при всех путях выполнения
+E:\C++ Projects\Tests\ProgramLanguage\ProgramLanguage\UnaryExpression.hh(21): warning C4715: UnaryExpression::eval: значение возвращается не при всех путях выполнения
+  ProgramLanguage.vcxproj -> E:\C++ Projects\Tests\ProgramLanguage\x64\Debug\ProgramLanguage.exe

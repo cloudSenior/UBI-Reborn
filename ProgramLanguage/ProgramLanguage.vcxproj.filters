@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Исходные файлы">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Файлы заголовков">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Файлы ресурсов">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Файлы заголовков\Token">
+      <UniqueIdentifier>{807005f2-3ade-4811-b3f5-c7aca70d3ee2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\Lexer">
+      <UniqueIdentifier>{32a1b5de-5d28-4b38-a541-8ff44cad2885}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\Variable">
+      <UniqueIdentifier>{49d52a3a-1806-4b06-918d-4e3db8dc9d4d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\Expression">
+      <UniqueIdentifier>{016b15a2-0a79-4604-98c5-4a9df239dbeb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\Variable\Value">
+      <UniqueIdentifier>{9e2e3f17-3e69-42f6-a640-e762499b6f96}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\Parser">
+      <UniqueIdentifier>{9a725bf7-54cf-4c5c-9bc8-2f186f4986b6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\Statement">
+      <UniqueIdentifier>{f176c328-ce98-4f84-abfd-ac31a0abf704}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Token.hh">
+      <Filter>Файлы заголовков\Token</Filter>
+    </ClInclude>
+    <ClInclude Include="defs.hh">
+      <Filter>Файлы ресурсов</Filter>
+    </ClInclude>
+    <ClInclude Include="Lexer.hh">
+      <Filter>Файлы заголовков\Lexer</Filter>
+    </ClInclude>
+    <ClInclude Include="Expression.hh">
+      <Filter>Файлы заголовков\Expression</Filter>
+    </ClInclude>
+    <ClInclude Include="Variable.hh">
+      <Filter>Файлы заголовков\Variable</Filter>
+    </ClInclude>
+    <ClInclude Include="Value.hh">
+      <Filter>Файлы заголовков\Variable\Value</Filter>
+    </ClInclude>
+    <ClInclude Include="ValueExpression.hh">
+      <Filter>Файлы заголовков\Expression</Filter>
+    </ClInclude>
+    <ClInclude Include="BinaryExpression.hh">
+      <Filter>Файлы заголовков\Expression</Filter>
+    </ClInclude>
+    <ClInclude Include="UnaryExpression.hh">
+      <Filter>Файлы заголовков\Expression</Filter>
+    </ClInclude>
+    <ClInclude Include="Interpreter.hh">
+      <Filter>Файлы заголовков\Parser</Filter>
+    </ClInclude>
+    <ClInclude Include="Statement.hh">
+      <Filter>Файлы заголовков\Statement</Filter>
+    </ClInclude>
+    <ClInclude Include="Assigment.hh">
+      <Filter>Файлы заголовков\Statement</Filter>
+    </ClInclude>
+    <ClInclude Include="PrintAssigment.hh">
+      <Filter>Файлы заголовков\Statement</Filter>
+    </ClInclude>
+    <ClInclude Include="ConditionExpression.hh">
+      <Filter>Файлы заголовков\Expression</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cc">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="main.ubi">
+      <Filter>Исходные файлы</Filter>
+    </None>
+  </ItemGroup>
+</Project>
