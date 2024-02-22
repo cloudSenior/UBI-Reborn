@@ -20,7 +20,7 @@ public:
 
 	TokenNode run() 
     { 
-        while (Position < Length)
+        while (Position <= Length)
         {
             char Current = peek();
 

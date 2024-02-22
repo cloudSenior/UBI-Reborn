@@ -6,14 +6,6 @@
 #include "Expression.hh"
 #include "Value.hh"
 
-/*
-static std::map<std::string, Value*> Variables {
-    { "PI",              new NumberValue(3.1415926535) },
-    { "E",               new NumberValue(2.7182818284) },
-    { "GOLDEN_ROTATION", new NumberValue(1.6180339887) },
-    { "TAU",             new NumberValue(6.283185307)  }
-};
-*/
 
 #pragma region Variable Container
 

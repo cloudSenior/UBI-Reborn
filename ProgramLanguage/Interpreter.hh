@@ -84,7 +84,7 @@ private:
 
         if (match(TokenType::ELSE)) 
         {
-            ifStatment = statement();
+            elseStatment = statement();
         } 
         else 
         {

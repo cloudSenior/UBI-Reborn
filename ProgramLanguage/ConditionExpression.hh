@@ -13,7 +13,7 @@ public:
         this->expr2 = expr2;
     }
 
-    Value* eval() override 
+    Value* eval() override
     {
         return typeid(expr1->eval()) == typeid(StringValue) ? StringCondition() : NumberCondition();
     }
@@ -50,10 +50,10 @@ private:
 
         switch (operation) {
         case '>':
-            return new NumberValue(number1 < number2);
+            return new NumberValue(number1 > number2);
 
         case '<':
-            return new NumberValue(number1 > number2);
+            return new NumberValue(number1 < number2);
 
         case '=':
         default:

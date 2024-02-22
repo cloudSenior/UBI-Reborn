@@ -8,5 +8,5 @@ E:\C++ Projects\Tests\ProgramLanguage\ProgramLanguage\MatchAssigment.hh(19,41): 
 E:\C++ Projects\Tests\ProgramLanguage\ProgramLanguage\Interpreter.hh(77): warning C4715: Interpreter::assigmentStatement: значение возвращается не при всех путях выполнения
 E:\C++ Projects\Tests\ProgramLanguage\ProgramLanguage\ConditionExpression.hh(43): warning C4715: ConditionalExpression::StringCondition: значение возвращается не при всех путях выполнения
 E:\C++ Projects\Tests\ProgramLanguage\ProgramLanguage\Interpreter.hh(198): warning C4715: Interpreter::primary: значение возвращается не при всех путях выполнения
-E:\C++ Projects\Tests\ProgramLanguage\ProgramLanguage\Variable.hh(78): warning C4715: VariableData::get: значение возвращается не при всех путях выполнения
+E:\C++ Projects\Tests\ProgramLanguage\ProgramLanguage\Variable.hh(70): warning C4715: VariableData::get: значение возвращается не при всех путях выполнения
   ProgramLanguage.vcxproj -> E:\C++ Projects\Tests\ProgramLanguage\x64\Debug\ProgramLanguage.exe

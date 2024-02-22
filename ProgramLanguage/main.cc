@@ -13,16 +13,24 @@ int main()
     ifstream f("main.ubi");
 
     
-
-    while (getline(f, buffer, '\n')) 
+    if (f.good() && f.is_open()) 
     {
-        Lexer lexer(buffer);
-        TokenNode node = lexer.run();
+        while (getline(f, buffer, '\n')) 
+        {
+            Lexer lexer(buffer);
+            TokenNode node = lexer.run();
 
-        Interpreter interpreter(node);
+            Interpreter interpreter(node);
 
-        for (auto& a : interpreter.run()) {
-            a->execute();
+            std::vector<Statement*> StatementStack = interpreter.run();
+
+            if (StatementStack.size() >= 0) 
+            {
+                for (auto& iteration : StatementStack) 
+                {
+                    iteration->execute();
+                }
+            }
         }
     }
     
