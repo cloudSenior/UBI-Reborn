@@ -16,7 +16,9 @@ public:
         switch (operation) 
         {
             case '-': return new NumberValue(-expr->eval()->asDouble());
-            case '+': return new NumberValue(expr->eval()->asDouble());
+            case '+': 
+                default:
+                 return new NumberValue(expr->eval()->asDouble());
         }
     }
      

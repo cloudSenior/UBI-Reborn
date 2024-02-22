@@ -7,11 +7,11 @@
 
 
 
-class PrintAssigment : public Statement
+class PrintStatement : public Statement
 {
 public:
 
-	PrintAssigment( Expression* expression )
+	PrintStatement( Expression* expression )
 	{
 		this->expression = expression;
 	}

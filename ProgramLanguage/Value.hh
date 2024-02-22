@@ -30,7 +30,7 @@ public:
         }
 		catch (std::exception& err)
 		{
-            return "";
+            return err.what();
 		}
     }
 

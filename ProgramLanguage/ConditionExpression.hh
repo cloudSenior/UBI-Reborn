@@ -15,9 +15,14 @@ public:
 
     Value* eval() override 
     {
+        return typeid(expr1->eval()) == typeid(StringValue) ? StringCondition() : NumberCondition();
+    }
+
+private:
+    Value* StringCondition()
+    {
         Value* value1 = expr1->eval();
         Value* value2 = expr2->eval();
-
         if (typeid(value1) == typeid(StringValue)) 
         {
             std::string string1 = value1->asString();
@@ -35,7 +40,12 @@ public:
                 return new NumberValue(string1._Equal(string2));
             }
         }
+    }
 
+    Value* NumberCondition()
+    {
+        Value* value1 = expr1->eval();
+        Value* value2 = expr2->eval();
         double number1 = value1->asDouble(), number2 = value2->asDouble();
 
         switch (operation) {
@@ -51,7 +61,6 @@ public:
         }
     }
 
-private:
     Expression* expr1;
     Expression* expr2;
 

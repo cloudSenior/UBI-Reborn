@@ -16,7 +16,7 @@ const enum class TokenType
 	// Keywords
 	IF, 
 	ELSE,
-
+	LET,
 
 	// Other
     LPAREN,   // (
@@ -26,6 +26,7 @@ const enum class TokenType
 	EQUAL, // =
 	WORD,
     TEXT,
+	ECHO,
 	CODEEXIT
 };
 

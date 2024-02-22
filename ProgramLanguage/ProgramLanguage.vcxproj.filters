@@ -83,6 +83,9 @@
     <ClCompile Include="main.cc">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
+    <ClCompile Include="MatchAssigment.hh">
+      <Filter>Файлы заголовков\Statement</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="main.ubi">

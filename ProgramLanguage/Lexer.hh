@@ -24,15 +24,83 @@ public:
         {
             char Current = peek();
 
-            if (isdigit(Current))  
-                tokenizateNumber();
-            else if (OPERATION.find(Current) != -1) 
-                tokenizateOperation();
-            else
-                next();
-           
+            if (std::isdigit(Current)) tokenizateNumber();
+            else if (std::isalpha(Current)) tokenizateWord();
+            else if (OPERATION.find(Current) != -1) tokenizateOperation();
+            else if (Current == '"' || Current == '\'') tokenizeText();
+            else next();
+            
         }
         return Tokens;
+    }
+
+
+    void tokenizeText()
+    {
+        next(); 
+        str buffer;
+        char current = peek(0);
+
+        while (true) 
+        {
+            if (current == '\\')
+            {
+                current = next();
+                switch (current) 
+                {
+                case '"':
+                    current = next();
+                    buffer.append("\"");
+                    continue;
+
+                case '\'':
+                    current = next();
+                    buffer.append("'");
+                    continue;
+
+                 case 'n':
+                    current = next();
+                    buffer.append("\n");
+                    continue;
+
+                 case 't':
+                    current = next();
+                    buffer.append("\t");
+                    continue;
+                }
+
+                buffer += "\\";
+                continue;
+            }
+
+            if (current == '"' || current == '\'') break;
+        
+            buffer += current;
+            current = next();
+        }
+
+        next();
+
+        addToken(TokenType::TEXT, buffer);
+    }
+
+    void tokenizateWord()
+    {
+        std::string buffer;
+        char current = peek(0);
+
+        while (true) 
+        {
+            if (!(std::isdigit(current) || std::isalpha(current)) && (current != '_') && (current != '$')) break;
+
+            buffer += current;
+            current = next();
+        }
+
+        if (buffer == "echo")       addToken(TokenType::ECHO);
+        else if (buffer == "match") addToken(TokenType::IF);
+        else if (buffer == "else")  addToken(TokenType::ELSE);
+        else addToken(TokenType::WORD, buffer);
     }
 
 
@@ -45,9 +113,12 @@ public:
         {
             if (Current == '.') 
             {
-                if (Buffer.find('.') != std::string::npos) { }
+                if (Buffer.find('.') != -1) 
+                { 
+                
+                }
             }
-            else if (!std::isdigit(Current))
+            else if (!std::isdigit(Current)) 
             {
                 break;
             }

@@ -12,12 +12,12 @@ public:
     Assigment( std::string variable, Expression* expression )
     {
         this->variable = variable;
-        this->expression = expression;
+        this->expression = std::move(expression);
     }
 
     void execute() override 
     {
-        IVC.set(variable, expression->eval());
+        Variables.set(variable, expression->eval());
     }
 
 private:

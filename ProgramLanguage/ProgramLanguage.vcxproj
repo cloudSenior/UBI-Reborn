@@ -146,6 +146,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cc" />
+    <ClCompile Include="MatchAssigment.hh" />
   </ItemGroup>
   <ItemGroup>
     <None Include="main.ubi" />

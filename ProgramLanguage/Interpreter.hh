@@ -1,12 +1,22 @@
 #pragma once
 
+#pragma region Expression libs
 #include "Expression.hh"
-
 #include "ValueExpression.hh"
 #include "UnaryExpression.hh"
 #include "BinaryExpression.hh"
+#include "ConditionExpression.hh"
+#pragma endregion
 
-#include "Lexer.hh"
+#pragma region Statement libs
+#include "Statement.hh"
+#include "Assigment.hh"
+#include "PrintAssigment.hh"
+#include "MatchAssigment.hh"
+#pragma endregion 
+
+#include "Variable.hh"
+
 
 
 class Interpreter
@@ -21,13 +31,13 @@ public:
         Position = NULL;
     }
 
-    vec<Expression*> run()
+    vec<Statement*> run()
     {
-        vec<Expression*> result;
+        vec<Statement*> result;
 
         while (!match( TokenType::CODEEXIT ))
         {
-            result.push_back(std::move(expression()));
+            result.push_back(std::move(statement()));
         }
         return result;
     }
@@ -38,11 +48,84 @@ public:
 /// 
 private:
     
-    Expression* expression()
+    
+    Statement* statement()
     {
-        return addtive();
+        if (match(TokenType::ECHO))
+        {
+            return new PrintStatement(expression());
+        } 
+
+        if (match(TokenType::IF))
+        {
+            return MatchElse();
+        }
+    
+        return assigmentStatement();
     }
 
+    Statement* assigmentStatement()
+    {
+        Token current = get(0);
+
+        if (match(TokenType::WORD) && get().getType() == TokenType::EQUAL)
+        {
+            consume(TokenType::EQUAL);
+            return new Assigment(current.getText(), expression());
+        }
+
+    }
+
+    Statement* MatchElse()
+    {
+        Expression* condition = std::move(expression());
+        Statement* ifStatment = std::move(statement());
+        Statement* elseStatment = nullptr;
+
+        if (match(TokenType::ELSE)) 
+        {
+            ifStatment = statement();
+        } 
+        else 
+        {
+            elseStatment = nullptr;
+        }
+
+        return new MatchStatement(condition, ifStatment, elseStatment);
+    }
+
+
+    Expression* expression()
+    {
+        return conditional();
+    }
+
+    Expression* conditional()
+    {
+        Expression* Add = std::move(addtive());
+        while (true) 
+        {
+            if (match(TokenType::EQUAL) && match(TokenType::EQUAL)) 
+            {
+                Add = new ConditionalExpression('=', std::move(Add), addtive());
+                continue;
+            }
+            if (match(TokenType::LT)) 
+            {
+                Add = new ConditionalExpression('<', std::move(Add), addtive());
+                continue;
+            }
+            if (match(TokenType::RT)) 
+            {
+                Add = new ConditionalExpression('>', std::move(Add), addtive());
+                continue;
+            }
+
+            break;
+        }
+
+        return Add;
+    }
 
     Expression* addtive()
     {
@@ -66,6 +149,7 @@ private:
         return Addtive;
     }
 
+
     Expression* multi()
     {
         Expression* Unary = unary();
@@ -88,11 +172,13 @@ private:
         return Unary;
     }
 
+
     Expression* unary()
     {
         if (match(TokenType::MINUS)) return new UnaryExpression('-', std::move(primary()));
         return primary();
     }
+
 
     Expression* primary()
     {
@@ -105,8 +191,11 @@ private:
             return result;
         }
 
-    }
 
+        if (match(TokenType::TEXT)) return new ValueExpression(current.getText());
+        if (match(TokenType::WORD)) return new VariableExpression(current.getText());
+
+    }
 
 /// 
 /// Supportive Method's
@@ -133,7 +222,7 @@ bool match(TokenType type)
     return true;
 }
 
-Token get(uint32 realativePosition)
+Token get(uint32 realativePosition = 0)
 {
     size_t NowPosition = Position + realativePosition;
     if (NowPosition >= Size) return CodeExits;

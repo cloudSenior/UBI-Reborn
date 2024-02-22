@@ -22,7 +22,7 @@ int main()
         Interpreter interpreter(node);
 
         for (auto& a : interpreter.run()) {
-            cout << a->eval()->asDouble() << endl;
+            a->execute();
         }
     }
     

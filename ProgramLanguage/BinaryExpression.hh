@@ -37,17 +37,20 @@ private:
         Value* Value2 = expression2->eval();
         switch (operation) 
         {
-            case '+': return new NumberValue(Value1->asDouble() + Value2->asDouble());
             case '-': return new NumberValue(Value1->asDouble() - Value2->asDouble());
             case '/': return new NumberValue(Value1->asDouble() / Value2->asDouble());
             case '*': return new NumberValue(Value1->asDouble() * Value2->asDouble());
+            case '+': 
+                default:
+                    return new NumberValue(Value1->asDouble() + Value2->asDouble());
         }
     }
 
 
     Value* stringEval()
     {
-        std::string StrValue = expression1->eval()->asString(), StrValue2 = expression2->eval()->asString();
+        std::string StrValue = expression1->eval()->asString(), 
+                    StrValue2 = expression2->eval()->asString();
         int NumValue = expression2->eval()->asDouble();
 
         switch (operation) 
@@ -61,7 +64,9 @@ private:
                 return new StringValue(buffer);
             }
 
-            case '+': return new StringValue(StrValue + StrValue2);
+            case '+':
+                default:
+                    return new StringValue(StrValue + StrValue2);
         }
     }
 
