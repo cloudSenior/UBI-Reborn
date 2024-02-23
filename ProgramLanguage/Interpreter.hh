@@ -120,7 +120,7 @@ private:
 
     Expression* LogicalAnd()
     {
-        Expression* result = conditional();
+        Expression* result = LogicalEqualed();
 
         while (true) 
         {

@@ -22,7 +22,7 @@ public:
 
         if (typeid(value1) == typeid(StringValue))
         {
-            num1 = value1->asString().compare(value2->asString());
+            return new NumberValue(value1->asString().compare(value2->asString()));
             num2 = 0;
         }
         else
