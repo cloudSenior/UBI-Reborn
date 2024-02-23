@@ -17,7 +17,7 @@ public:
 
     void execute() override 
     {
-        Variables.set(variable, expression->eval());
+        VariableData.set(variable, expression->eval());
     }
 
 private:

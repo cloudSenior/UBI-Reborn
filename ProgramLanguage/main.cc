@@ -28,15 +28,9 @@ int main()
 
     Interpreter interpreter(node);
 
-    std::vector<Statement*> StatementStack = interpreter.run();
+    Statement* StatementStack = interpreter.run();
 
-    if (StatementStack.size() >= 0) 
-    {
-        for (auto& iteration : StatementStack) 
-        {
-            iteration->execute();
-        }
-    }
+    StatementStack->execute();
 
 
     return EXIT_SUCCESS;

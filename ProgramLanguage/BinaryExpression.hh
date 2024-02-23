@@ -40,6 +40,7 @@ private:
             case '-': return new NumberValue(Value1->asDouble() - Value2->asDouble());
             case '/': return new NumberValue(Value1->asDouble() / Value2->asDouble());
             case '*': return new NumberValue(Value1->asDouble() * Value2->asDouble());
+            case '%': return new NumberValue(std::fmod(Value1->asDouble(), Value2->asDouble()));
             case '+': 
                 default:
                     return new NumberValue(Value1->asDouble() + Value2->asDouble());
@@ -51,7 +52,7 @@ private:
     {
         std::string StrValue = expression1->eval()->asString(), 
                     StrValue2 = expression2->eval()->asString();
-        int NumValue = expression2->eval()->asDouble();
+        double NumValue = expression2->eval()->asDouble();
 
         switch (operation) 
         {

@@ -1,21 +1,38 @@
 #pragma once
 
 #pragma region Expression libs
+
 #include "Expression.hh"
+
 #include "ValueExpression.hh"
+
 #include "UnaryExpression.hh"
+
 #include "BinaryExpression.hh"
+
 #include "ConditionExpression.hh"
+
 #pragma endregion
 
 #pragma region Statement libs
 #include "Statement.hh"
+
 #include "Assigment.hh"
+
 #include "PrintAssigment.hh"
+
 #include "MatchAssigment.hh"
+
+#include "BlockStatement.hh";
+
+#include "WhileStatement.hh" 
+
+#include "ForStatement.hh"
+
 #pragma endregion 
 
 #include "Variable.hh"
+
 
 
 
@@ -31,14 +48,14 @@ public:
         Position = NULL;
     }
 
-    vec<Statement*> run()
+    Statement* run()
     {
-        vec<Statement*> result;
+        BlockStatement* result = new BlockStatement;
 
         while (!match( TokenType::CODEEXIT ))
         {
-            result.push_back(std::move(statement()));
-        }
+            result->add(statement());
+        }        
         return result;
     }
 
@@ -48,17 +65,39 @@ public:
 /// 
 private:
     
+    Statement* Block()
+    {
+        BlockStatement* block = new BlockStatement;
+        
+        consume(TokenType::LBRACE);
+        while (!match( TokenType::RBRACE ))
+        {
+            block->add(std::move(statement()));
+        }
+
+        return std::move(block);
+    }
     
     Statement* statement()
     {
         if (match(TokenType::ECHO))
         {
-            return new PrintStatement(expression());
+            return new PrintStatement(std::move(expression()));
         } 
 
-        if (match(TokenType::IF))
+        else if (match(TokenType::IF))
         {
             return MatchElse();
+        }
+        
+        else if (match(TokenType::WHILE))
+        {
+            return WhileState();
+        }
+
+        else if (match( TokenType::FOR ))
+        {
+            return ForState();
         }
     
         return assigmentStatement();
@@ -70,21 +109,50 @@ private:
 
         if (match(TokenType::WORD) && get().getType() == TokenType::EQUAL)
         {
+            std::string variable = current.getText();
             consume(TokenType::EQUAL);
-            return new Assigment(current.getText(), expression());
+            return new Assigment(variable, expression());
         }
 
+    }
+
+
+    Statement* StatementOrBlock() 
+    {
+        if (get().getType() == TokenType::LBRACE) {
+            return Block();
+        }
+        return statement();
+    }
+
+    Statement* WhileState()
+    {
+        Expression* condition = expression();
+        Statement* statement = StatementOrBlock();
+        return new WhileStatement(condition, statement);
+    }
+
+    Statement* ForState()
+    {
+        Statement* inizilation = assigmentStatement();
+        consume(TokenType::COMMA);
+        Expression* termination = expression();
+        consume(TokenType::COMMA);
+        Statement* increment = assigmentStatement();
+        Statement* statement = StatementOrBlock();
+
+        return new ForStatement(termination, statement, inizilation, increment);
     }
 
     Statement* MatchElse()
     {
         Expression* condition = std::move(expression());
-        Statement* ifStatment = std::move(statement());
+        Statement* ifStatment = std::move(StatementOrBlock());
         Statement* elseStatment = nullptr;
 
         if (match(TokenType::ELSE)) 
         {
-            elseStatment = statement();
+            elseStatment = StatementOrBlock();
         } 
         else 
         {
@@ -100,6 +168,7 @@ private:
     {
         return LogicalOr();
     }
+
 
     Expression* LogicalOr()
     {
@@ -221,6 +290,11 @@ private:
                 Unary = new BinaryExpression('/', std::move(Unary), unary());
                 continue;
             }
+            if (match(TokenType::MOD)) 
+            {
+                Unary = new BinaryExpression('%', std::move(Unary), unary());
+                continue;
+            }
             break;
         }
 
@@ -248,8 +322,11 @@ private:
 
 
         if (match(TokenType::TEXT)) return new ValueExpression(current.getText());
-        if (match(TokenType::WORD)) return new VariableExpression(current.getText());
 
+        if (match(TokenType::WORD)) 
+        {
+            return new VariableExpression(current.getText());
+        }
     }
 
 /// 
@@ -259,7 +336,7 @@ private:
 Token consume(TokenType type)
 {
     Token current = get(0);
-    if (type != current.getType()) throw "Error";
+    if (type != current.getType()) throw std::runtime_error("Error consume keyword");
     
     Position = Position + 1;
 

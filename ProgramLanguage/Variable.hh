@@ -10,78 +10,53 @@
 #pragma region Variable Container
 
 
-struct VD
-{
-    std::string index;
-    Value* value;
-}; // Variable Data 
+static std::map<std::string, Value*> Variables {
+    { "PI", new NumberValue(3.1415926535) },
+    { "E", new NumberValue(2.7182818284) },
+    { "GOLDEN_ROTATION", new NumberValue(1.6180339887) },
+    { "TAU", new NumberValue(6.283185307) },
+    { "@nil", new StringValue("@nil") }
+};
 
-class VariableData
+class
 {
 public:
 
-
-    explicit VariableData( std::initializer_list<VD> init )
-        : Data( init )
-    {
-
-    }
-
-
     bool exits( std::string key )
     {
-        for (std::vector<VD>::iterator iter = Data.begin(); iter != Data.end(); ++iter)
-        {
-            if (iter->index == key)
-            {
-                return true;
-            }
-        }
-
-        return false;
+        return Variables.contains( key );
     }
 
 
     Value* find( std::string key )
     {
-        for (std::vector<VD>::iterator iter = Data.begin(); iter != Data.end(); ++iter)
-        {
-            if (iter->index == key)
-            {
-                return iter->value;
-            }
-        }
-
+        if (Variables.contains(key))
+            return Variables.at(key);
         return nullptr;
     }
 
 
     void set( std::string key, Value* value )
     {
-        Data.push_back(VD(key, value));
+        Variables[key] = value;
     }
 
 
     Value* get(std::string key)
     {
-        Value* value = this->find(key);
-        if (value != nullptr)
-            return value;
+        if (!Variables.contains(key))
+            return __nil__value__;
+        return Variables.at(key);
     }
 
 private:
-    std::vector<VD> Data;
-};
+    StringValue* __nil__value__ = new StringValue("@nil"); 
+
+} VariableData;
 #pragma endregion
 
-static VariableData Variables(
-    { 
-        VD{ "PI",              new NumberValue(3.1415926535) },
-        VD{ "E",               new NumberValue(2.7182818284) },
-        VD{ "GOLDEN_ROTATION", new NumberValue(1.6180339887) },
-        VD{ "TAU",             new NumberValue(6.283185307)  }
-    }
-);
+
+
 
 
 
@@ -95,8 +70,7 @@ public:
 
     Value* eval() override
     {
-        return Variables.get(key);
-        throw "Error Eval";
+        return VariableData.get(key);
     }
 
 private:

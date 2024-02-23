@@ -78,6 +78,15 @@
     <ClInclude Include="ConditionExpression.hh">
       <Filter>Файлы заголовков\Expression</Filter>
     </ClInclude>
+    <ClInclude Include="BlockStatement.hh">
+      <Filter>Файлы заголовков\Statement</Filter>
+    </ClInclude>
+    <ClInclude Include="ForStatement.hh">
+      <Filter>Файлы заголовков\Statement</Filter>
+    </ClInclude>
+    <ClInclude Include="WhileStatement.hh">
+      <Filter>Файлы заголовков\Statement</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cc">

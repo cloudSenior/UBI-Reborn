@@ -100,6 +100,10 @@ public:
             addToken(TokenType::IF);
         else if (buffer == "else")
             addToken(TokenType::ELSE);
+        else if (buffer == "for")
+            addToken(TokenType::FOR);
+        else if (buffer == "while")
+            addToken(TokenType::WHILE);
         else
             addToken(TokenType::WORD, buffer);
     }
@@ -221,11 +225,10 @@ private:
         TokenContainer::ContainerContent{ "/", TokenType::DIVISION },
         TokenContainer::ContainerContent{ "*", TokenType::MULTIPLICATION },
 
-
         TokenContainer::ContainerContent{ "(", TokenType::LPAREN },
         TokenContainer::ContainerContent{ ")", TokenType::RPAREN },
 
-
+        TokenContainer::ContainerContent{ ",", TokenType::COMMA },
         TokenContainer::ContainerContent{ "<", TokenType::LT },
         TokenContainer::ContainerContent{ ">", TokenType::GT },
 
@@ -243,11 +246,15 @@ private:
         TokenContainer::ContainerContent{ "|", TokenType::BAR },
         TokenContainer::ContainerContent{ "||", TokenType::BARBAR },
 
-        TokenContainer::ContainerContent{ "!", TokenType::EXCL }
+        TokenContainer::ContainerContent{ "!", TokenType::EXCL },
+        TokenContainer::ContainerContent{ "{", TokenType::LBRACE },
+        TokenContainer::ContainerContent{ "}", TokenType::RBRACE },
+
+        TokenContainer::ContainerContent{ "%", TokenType::MOD }
     };
 
 	std::string Input { "\0" };
-    std::string Operations { "+-/*()><=&|!" };
+    std::string Operations { "+-/*()><=&|!{}%," };
     std::size_t Position { NULL }, Length { NULL };
 
 	TokenNode Tokens = TokenNode {};

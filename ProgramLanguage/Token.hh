@@ -17,6 +17,8 @@ const enum class TokenType
 	IF, 
 	ELSE,
 	LET,
+	FOR,
+	WHILE,
 
 	// Other
     LPAREN,   // (
@@ -27,16 +29,20 @@ const enum class TokenType
 	WORD,
     TEXT,
 	ECHO,
-    NONE,
-    EXCL,
-    AMP,
-    BAR,
-    EQEQ,
-    EXCLEQ,
-    LTEQ,
-    GTEQ,
-    AMPAMP,
-    BARBAR,
+	MOD, // %
+    NONE, // nil
+    EXCL, // !
+    AMP, // &
+    BAR, // |
+    EQEQ, // ==
+    EXCLEQ, // !=
+    LTEQ, // <=
+    GTEQ, // >=
+    AMPAMP, // &&
+    BARBAR, // ||
+	LBRACE, // {
+	RBRACE, // }
+    COMMA, // ,
 	CODEEXIT
 };
 

@@ -1,9 +1,20 @@
-a = 3
-b = 3
 
 
-match ( (a * 2) > b && (b / 2) < a ) || (b == a && a == b) 
-	echo (123)
-else
-	echo (321)
+echo "\n For \n"
 
+for i = 0, i < 11, i = i + 1
+{
+	echo i
+	echo '\n'
+}
+
+echo "\n While\n"
+
+k = 0
+
+while k < 11
+{
+	echo k
+	echo '\n'
+	k = k + 1
+}

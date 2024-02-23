@@ -131,9 +131,11 @@
   <ItemGroup>
     <ClInclude Include="Assigment.hh" />
     <ClInclude Include="BinaryExpression.hh" />
+    <ClInclude Include="BlockStatement.hh" />
     <ClInclude Include="ConditionExpression.hh" />
     <ClInclude Include="defs.hh" />
     <ClInclude Include="Expression.hh" />
+    <ClInclude Include="ForStatement.hh" />
     <ClInclude Include="Lexer.hh" />
     <ClInclude Include="Interpreter.hh" />
     <ClInclude Include="PrintAssigment.hh" />
@@ -143,6 +145,7 @@
     <ClInclude Include="Value.hh" />
     <ClInclude Include="ValueExpression.hh" />
     <ClInclude Include="Variable.hh" />
+    <ClInclude Include="WhileStatement.hh" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cc" />
