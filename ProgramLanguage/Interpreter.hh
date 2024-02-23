@@ -94,10 +94,60 @@ private:
         return new MatchStatement(condition, ifStatment, elseStatment);
     }
 
+    
 
     Expression* expression()
     {
-        return conditional();
+        return LogicalOr();
+    }
+
+    Expression* LogicalOr()
+    {
+        Expression* result = LogicalAnd();
+
+        while (true) 
+        {
+            if (match(TokenType::BARBAR)) 
+            {
+                result = new ConditionalExpression(TokenType::BARBAR, std::move(result), LogicalAnd());
+                continue;
+            }
+            break;
+        }
+        
+        return result;
+    }
+
+    Expression* LogicalAnd()
+    {
+        Expression* result = conditional();
+
+        while (true) 
+        {
+            if (match( TokenType::AMPAMP ))
+            {
+                result = new ConditionalExpression(TokenType::AMPAMP, std::move(result), LogicalEqualed());
+                continue;
+            }
+            break;
+        }
+        
+        return result;
+    }
+
+    Expression* LogicalEqualed()
+    {
+        Expression* result = conditional();
+
+        if (match(TokenType::EQEQ)) 
+        {
+            result = new ConditionalExpression(TokenType::EQEQ, std::move(result), conditional());
+        }
+        if (match(TokenType::EXCLEQ)) 
+        {
+            result = new ConditionalExpression(TokenType::EXCLEQ, std::move(result), conditional());
+        }
+        return result;
     }
 
     Expression* conditional()
@@ -105,19 +155,24 @@ private:
         Expression* Add = std::move(addtive());
         while (true) 
         {
-            if (match(TokenType::EQEQ)) 
+            if (match(TokenType::LTEQ)) 
             {
-                Add = new ConditionalExpression('=', std::move(Add), addtive());
+                Add = new ConditionalExpression(TokenType::LTEQ, std::move(Add), addtive());
                 continue;
             }
             if (match(TokenType::LT)) 
             {
-                Add = new ConditionalExpression('<', std::move(Add), addtive());
+                Add = new ConditionalExpression(TokenType::LT, std::move(Add), addtive());
                 continue;
             }
-            if (match(TokenType::RT)) 
+            if (match(TokenType::GTEQ)) 
             {
-                Add = new ConditionalExpression('>', std::move(Add), addtive());
+                Add = new ConditionalExpression(TokenType::GTEQ, std::move(Add), addtive());
+                continue;
+            }
+            if (match(TokenType::GT)) 
+            {
+                Add = new ConditionalExpression(TokenType::GT, std::move(Add), addtive());
                 continue;
             }
 

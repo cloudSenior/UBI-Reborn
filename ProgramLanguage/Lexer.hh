@@ -227,7 +227,7 @@ private:
 
 
         TokenContainer::ContainerContent{ "<", TokenType::LT },
-        TokenContainer::ContainerContent{ ">", TokenType::RT },
+        TokenContainer::ContainerContent{ ">", TokenType::GT },
 
 
         TokenContainer::ContainerContent{ "=", TokenType::EQUAL },

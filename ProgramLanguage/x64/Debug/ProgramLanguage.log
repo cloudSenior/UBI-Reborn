@@ -2,12 +2,14 @@
 E:\C++ Projects\Tests\ProgramLanguage\ProgramLanguage\BinaryExpression.hh(54,22): warning C4244: инициализация: преобразование "double" в "int", возможна потеря данных
   (компиляция исходного файла "main.cc")
   
+E:\C++ Projects\Tests\ProgramLanguage\ProgramLanguage\ConditionExpression.hh(81,14): warning C4101: result: неиспользованная локальная переменная
+  (компиляция исходного файла "main.cc")
+  
 E:\C++ Projects\Tests\ProgramLanguage\ProgramLanguage\MatchAssigment.hh(19,41): warning C4805: ==: небезопасное смешение типа "double" и типа "bool" в операции
   (компиляция исходного файла "main.cc")
   
-E:\C++ Projects\Tests\ProgramLanguage\ProgramLanguage\Interpreter.hh(77): warning C4715: Interpreter::assigmentStatement: значение возвращается не при всех путях выполнения
 E:\C++ Projects\Tests\ProgramLanguage\ProgramLanguage\Token.hh(115): warning C4715: TokenContainer::operator[]: значение возвращается не при всех путях выполнения
-E:\C++ Projects\Tests\ProgramLanguage\ProgramLanguage\ConditionExpression.hh(43): warning C4715: ConditionalExpression::StringCondition: значение возвращается не при всех путях выполнения
-E:\C++ Projects\Tests\ProgramLanguage\ProgramLanguage\Interpreter.hh(198): warning C4715: Interpreter::primary: значение возвращается не при всех путях выполнения
+E:\C++ Projects\Tests\ProgramLanguage\ProgramLanguage\Interpreter.hh(77): warning C4715: Interpreter::assigmentStatement: значение возвращается не при всех путях выполнения
+E:\C++ Projects\Tests\ProgramLanguage\ProgramLanguage\Interpreter.hh(253): warning C4715: Interpreter::primary: значение возвращается не при всех путях выполнения
 E:\C++ Projects\Tests\ProgramLanguage\ProgramLanguage\Variable.hh(70): warning C4715: VariableData::get: значение возвращается не при всех путях выполнения
   ProgramLanguage.vcxproj -> E:\C++ Projects\Tests\ProgramLanguage\x64\Debug\ProgramLanguage.exe

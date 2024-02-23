@@ -1,18 +1,9 @@
+a = 3
+b = 3
 
 
-word = (2 + 2) * 2 // Comment
-word1 = 1	// Comment
-
-echo "Hello world!"
-
-/*
-  MULTI COMMENT
-  MULTI COMMENT
-  MULTI COMMENT
-  MULTI COMMENT
-  MULTI COMMENT
-  MULTI COMMENT
-  // QWEQWE
-  MULTI COMMENT
-*/
+match (50 > 100 && 40 > 2) 
+	echo (123)
+else
+	echo (321)
 

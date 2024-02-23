@@ -22,7 +22,7 @@ const enum class TokenType
     LPAREN,   // (
 	RPAREN,  // )
     LT,     // <
-    RT,    // >
+    GT,    // >
 	EQUAL, // =
 	WORD,
     TEXT,

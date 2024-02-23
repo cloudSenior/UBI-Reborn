@@ -7,9 +7,9 @@
 
 int main()
 {
-	using namespace std;
+    using namespace std;
 
-	string buffer, v;
+    string buffer, v;
     ifstream f("main.ubi");
 
     
@@ -17,10 +17,11 @@ int main()
     {
         while (getline(f, buffer, '\n')) 
         {
-            v += buffer + ' ';
+            v += buffer + '\n';
         }
     }
     f.close();
+
 
     Lexer lexer(v);
     Lexer::TokenNode node = lexer.run();
@@ -36,11 +37,9 @@ int main()
             iteration->execute();
         }
     }
-        
-    
-    
 
-	return EXIT_SUCCESS;
+
+    return EXIT_SUCCESS;
 }
 
 
