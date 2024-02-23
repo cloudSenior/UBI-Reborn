@@ -1,4 +1,18 @@
 
 
+word = (2 + 2) * 2 // Comment
+word1 = 1	// Comment
 
-match 1 > 2 echo 123 else echo 321
+echo "Hello world!"
+
+/*
+  MULTI COMMENT
+  MULTI COMMENT
+  MULTI COMMENT
+  MULTI COMMENT
+  MULTI COMMENT
+  MULTI COMMENT
+  // QWEQWE
+  MULTI COMMENT
+*/
+

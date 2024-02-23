@@ -22,7 +22,7 @@
 class Interpreter
 {
 public:
-
+    using TokenNode = Lexer::TokenNode;
 
     Interpreter( TokenNode Tokens )
     {
@@ -105,7 +105,7 @@ private:
         Expression* Add = std::move(addtive());
         while (true) 
         {
-            if (match(TokenType::EQUAL) && match(TokenType::EQUAL)) 
+            if (match(TokenType::EQEQ)) 
             {
                 Add = new ConditionalExpression('=', std::move(Add), addtive());
                 continue;

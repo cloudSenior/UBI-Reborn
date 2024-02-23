@@ -9,7 +9,7 @@ int main()
 {
 	using namespace std;
 
-	string buffer;
+	string buffer, v;
     ifstream f("main.ubi");
 
     
@@ -17,25 +17,28 @@ int main()
     {
         while (getline(f, buffer, '\n')) 
         {
-            Lexer lexer(buffer);
-            TokenNode node = lexer.run();
-
-            Interpreter interpreter(node);
-
-            std::vector<Statement*> StatementStack = interpreter.run();
-
-            if (StatementStack.size() >= 0) 
-            {
-                for (auto& iteration : StatementStack) 
-                {
-                    iteration->execute();
-                }
-            }
+            v += buffer + ' ';
         }
     }
-    
-
     f.close();
+
+    Lexer lexer(v);
+    Lexer::TokenNode node = lexer.run();
+
+    Interpreter interpreter(node);
+
+    std::vector<Statement*> StatementStack = interpreter.run();
+
+    if (StatementStack.size() >= 0) 
+    {
+        for (auto& iteration : StatementStack) 
+        {
+            iteration->execute();
+        }
+    }
+        
+    
+    
 
 	return EXIT_SUCCESS;
 }
