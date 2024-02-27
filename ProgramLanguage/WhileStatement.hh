@@ -1,6 +1,10 @@
 #pragma once
 #include "Statement.hh"
 #include "Expression.hh"
+
+#include "BreakStatement.hh"
+#include "ContinueStatement.hh"
+
 class WhileStatement : public Statement
 {
 public:
@@ -13,10 +17,23 @@ public:
 
     void execute() override
     {
+
         while (condition->eval()->asDouble() != 0)
         {
-            statement->execute();
+            try
+            {
+                statement->execute();
+            } 
+            catch (BreakStatement& bs)
+            {
+                break;
+            }
+            catch (ContinueStatement& cs)
+            {
+
+            }
         }
+
     }
 
 private:

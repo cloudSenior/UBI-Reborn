@@ -1,19 +1,23 @@
 
 
-echo "\n For \n"
 
-for i = 0, i < 11, i = i + 1
+
+
+
+k = 0 
+
+
+
+while k < 100 
 {
-	echo i
-	echo '\n'
-}
+	match (k % 10 == 0) 
+	{
+		echo "\nValue: "
+		echo k
+		echo " Continue\n"
+		continue 
+	}
 
-echo "\n While\n"
-
-k = 0
-
-while k < 11
-{
 	echo k
 	echo '\n'
 	k = k + 1

@@ -8,7 +8,22 @@ E:\C++ Projects\Tests\ProgramLanguage\ProgramLanguage\MatchAssigment.hh(19,41): 
 E:\C++ Projects\Tests\ProgramLanguage\ProgramLanguage\Interpreter.hh(26,10): warning C4067: непредвиденные лексемы за директивой препроцессора, требуется newline
   (компиляция исходного файла "main.cc")
   
-E:\C++ Projects\Tests\ProgramLanguage\ProgramLanguage\Token.hh(121): warning C4715: TokenContainer::operator[]: значение возвращается не при всех путях выполнения
-E:\C++ Projects\Tests\ProgramLanguage\ProgramLanguage\Interpreter.hh(117): warning C4715: Interpreter::assigmentStatement: значение возвращается не при всех путях выполнения
-E:\C++ Projects\Tests\ProgramLanguage\ProgramLanguage\Interpreter.hh(330): warning C4715: Interpreter::primary: значение возвращается не при всех путях выполнения
+E:\C++ Projects\Tests\ProgramLanguage\ProgramLanguage\BlockStatement.hh(22,32): warning C4101: err: неиспользованная локальная переменная
+  (компиляция исходного файла "main.cc")
+  
+E:\C++ Projects\Tests\ProgramLanguage\ProgramLanguage\WhileStatement.hh(27,36): warning C4101: bs: неиспользованная локальная переменная
+  (компиляция исходного файла "main.cc")
+  
+E:\C++ Projects\Tests\ProgramLanguage\ProgramLanguage\WhileStatement.hh(31,39): warning C4101: cs: неиспользованная локальная переменная
+  (компиляция исходного файла "main.cc")
+  
+E:\C++ Projects\Tests\ProgramLanguage\ProgramLanguage\ForStatement.hh(29,38): warning C4101: bs: неиспользованная локальная переменная
+  (компиляция исходного файла "main.cc")
+  
+E:\C++ Projects\Tests\ProgramLanguage\ProgramLanguage\ForStatement.hh(33,39): warning C4101: cs: неиспользованная локальная переменная
+  (компиляция исходного файла "main.cc")
+  
+E:\C++ Projects\Tests\ProgramLanguage\ProgramLanguage\Token.hh(124,1): warning C4715: TokenContainer::operator[]: значение возвращается не при всех путях выполнения
+E:\C++ Projects\Tests\ProgramLanguage\ProgramLanguage\Interpreter.hh(131,1): warning C4715: Interpreter::assigmentStatement: значение возвращается не при всех путях выполнения
+E:\C++ Projects\Tests\ProgramLanguage\ProgramLanguage\Interpreter.hh(344,1): warning C4715: Interpreter::primary: значение возвращается не при всех путях выполнения
   ProgramLanguage.vcxproj -> E:\C++ Projects\Tests\ProgramLanguage\x64\Debug\ProgramLanguage.exe

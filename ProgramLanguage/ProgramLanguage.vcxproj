@@ -132,7 +132,9 @@
     <ClInclude Include="Assigment.hh" />
     <ClInclude Include="BinaryExpression.hh" />
     <ClInclude Include="BlockStatement.hh" />
+    <ClInclude Include="BreakStatement.hh" />
     <ClInclude Include="ConditionExpression.hh" />
+    <ClInclude Include="ContinueStatement.hh" />
     <ClInclude Include="defs.hh" />
     <ClInclude Include="Expression.hh" />
     <ClInclude Include="ForStatement.hh" />

@@ -87,6 +87,12 @@
     <ClInclude Include="WhileStatement.hh">
       <Filter>Файлы заголовков\Statement</Filter>
     </ClInclude>
+    <ClInclude Include="BreakStatement.hh">
+      <Filter>Файлы заголовков\Statement</Filter>
+    </ClInclude>
+    <ClInclude Include="ContinueStatement.hh">
+      <Filter>Файлы заголовков\Statement</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cc">

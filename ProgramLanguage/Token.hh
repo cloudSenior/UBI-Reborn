@@ -43,6 +43,9 @@ const enum class TokenType
 	LBRACE, // {
 	RBRACE, // }
     COMMA, // ,
+	DO, // DO
+	CONTINUE, 
+	BREAK,
 	CODEEXIT
 };
 

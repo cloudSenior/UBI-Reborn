@@ -3,6 +3,9 @@
 #include "Statement.hh"
 #include "Expression.hh"
 
+#include "BreakStatement.hh"
+#include "ContinueStatement.hh"
+
 
 class ForStatement : public Statement
 {
@@ -18,13 +21,20 @@ public:
 
     void execute() override
     {
-
         for (inizilation->execute(); termination->eval()->asDouble() != 0; incriment->execute())
         {
-            statement->execute();
+            try
+            {
+                statement->execute();
+            } catch (BreakStatement& bs)
+            {
+                break;
+            }
+            catch (ContinueStatement& cs)
+            {
+                
+            }
         }
-        
-
     }
 
 private:

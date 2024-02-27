@@ -29,6 +29,8 @@
 
 #include "ForStatement.hh"
 
+#include "BreakStatement.hh"
+
 #pragma endregion 
 
 #include "Variable.hh"
@@ -95,10 +97,22 @@ private:
             return WhileState();
         }
 
+        else if (match( TokenType::BREAK ))
+        {
+            return new BreakStatement();
+        }
+
+        else if (match( TokenType::CONTINUE ))
+        {
+            return new ContinueStatement();
+        }
+
         else if (match( TokenType::FOR ))
         {
             return ForState();
         }
+
+
     
         return assigmentStatement();
     }

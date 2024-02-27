@@ -13,9 +13,15 @@ public:
 
     void execute() override
     {
-        for (auto statement: Statements)
+        try 
         {
-            statement->execute();
+            for (auto statement : Statements) {
+                statement->execute();
+            }
+        }
+        catch (std::exception& err)
+        {
+
         }
     }
 

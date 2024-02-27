@@ -104,6 +104,12 @@ public:
             addToken(TokenType::FOR);
         else if (buffer == "while")
             addToken(TokenType::WHILE);
+        else if (buffer == "do")
+            addToken(TokenType::DO);
+        else if (buffer == "continue")
+            addToken(TokenType::CONTINUE);
+        else if (buffer == "break")
+            addToken(TokenType::BREAK);
         else
             addToken(TokenType::WORD, buffer);
     }
