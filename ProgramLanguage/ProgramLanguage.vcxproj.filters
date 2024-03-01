@@ -34,6 +34,9 @@
     <Filter Include="Файлы заголовков\Statement">
       <UniqueIdentifier>{f176c328-ce98-4f84-abfd-ac31a0abf704}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Файлы заголовков\managment">
+      <UniqueIdentifier>{c03b9821-42d8-47f9-9d01-777b773b2067}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Token.hh">
@@ -92,6 +95,9 @@
     </ClInclude>
     <ClInclude Include="ContinueStatement.hh">
       <Filter>Файлы заголовков\Statement</Filter>
+    </ClInclude>
+    <ClInclude Include="Debugger.hh">
+      <Filter>Файлы заголовков\managment</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

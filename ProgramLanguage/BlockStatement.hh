@@ -21,7 +21,7 @@ public:
         }
         catch (std::exception& err)
         {
-
+            Debugger.error("BlockStatement err: error stold arguments");
         }
     }
 

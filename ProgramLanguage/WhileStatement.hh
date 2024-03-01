@@ -30,7 +30,7 @@ public:
             }
             catch (ContinueStatement& cs)
             {
-
+                continue;
             }
         }
 

@@ -150,8 +150,10 @@ private:
     {
         Statement* inizilation = assigmentStatement();
         consume(TokenType::COMMA);
+
         Expression* termination = expression();
         consume(TokenType::COMMA);
+
         Statement* increment = assigmentStatement();
         Statement* statement = StatementOrBlock();
 
@@ -350,7 +352,7 @@ private:
 Token consume(TokenType type)
 {
     Token current = get(0);
-    if (type != current.getType()) throw std::runtime_error("Error consume keyword");
+    if (type != current.getType()) Debugger.error("consume keyword");
     
     Position = Position + 1;
 

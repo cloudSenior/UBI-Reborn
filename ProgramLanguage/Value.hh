@@ -1,6 +1,9 @@
 #pragma once
 #include <string>
 
+#include "Debugger.hh"
+
+
 __interface Value
 {
    double asDouble();
@@ -30,7 +33,7 @@ public:
         }
 		catch (std::exception& err)
 		{
-            return err.what();
+            Debugger.warning("No casting number to string");
 		}
     }
 

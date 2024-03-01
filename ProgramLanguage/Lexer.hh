@@ -1,8 +1,12 @@
 #pragma once
 
 #include "Token.hh"
+#include "Debugger.hh"
 
-class Lexer {
+
+
+class Lexer 
+{
 public:
     using TokenNode     = vec< Token >;
     using TokenTypeNode = vec< TokenType >;
@@ -10,14 +14,15 @@ public:
 public:
     explicit Lexer(std::string Input_Code)
     {
-        this->Input  = Input_Code;
-        this->Length = Input.length();
-        this->Position = 0;
+        this->Input     = Input_Code;
+        this->Length    = Input.length();
+        this->Position  = 0;
     }
 
     TokenNode run()
     {
-        while (Position <= Length) {
+        while (Position <= Length) 
+        {
             char Current = peek(0);
 
             if (std::isdigit(Current))
@@ -94,25 +99,13 @@ public:
             current = next();
         }
 
-        if (buffer == "echo")
-            addToken(TokenType::ECHO);
-        else if (buffer == "match")
-            addToken(TokenType::IF);
-        else if (buffer == "else")
-            addToken(TokenType::ELSE);
-        else if (buffer == "for")
-            addToken(TokenType::FOR);
-        else if (buffer == "while")
-            addToken(TokenType::WHILE);
-        else if (buffer == "do")
-            addToken(TokenType::DO);
-        else if (buffer == "continue")
-            addToken(TokenType::CONTINUE);
-        else if (buffer == "break")
-            addToken(TokenType::BREAK);
+
+        if (KEYWORD.valid(buffer))
+            addToken(KEYWORD[buffer]);
         else
             addToken(TokenType::WORD, buffer);
     }
+
 
     void tokenizateNumber()
     {
@@ -120,10 +113,12 @@ public:
         std::string Buffer {};
 
         while (true) {
-            if (Current == '.') {
-                if (Buffer.find('.') != -1) {
-                }
-            } else if (!std::isdigit(Current)) {
+            if (Current == '.') 
+            {
+                if (Buffer.find('.') != -1) {}
+            } 
+            else if (!std::isdigit(Current)) 
+            {
                 break;
             }
 
@@ -187,7 +182,7 @@ public:
         while (true)
         {
             if (Current == '\0')
-                throw std::runtime_error("Missing Close MultiComment");
+                Debugger.error("Multi comment no found end [*/] : " + (Current));
 
             if (Current == '*' && peek(1) == '/')
                 break;
@@ -221,9 +216,7 @@ private:
 
 private:
 
-    /*
-        Need Fixe Operation Processing and Fixe operation on Lexer::run()
-    */
+    TokenNode Tokens = TokenNode {};
 
     TokenContainer OPERATION  {  
         TokenContainer::ContainerContent{ "+", TokenType::PLUS },
@@ -258,15 +251,23 @@ private:
 
         TokenContainer::ContainerContent{ "%", TokenType::MOD }
     };
+      
+    TokenContainer KEYWORD {
+        TokenContainer::ContainerContent{ "echo", TokenType::ECHO },
+        TokenContainer::ContainerContent{ "match", TokenType::IF },
+        TokenContainer::ContainerContent{ "else", TokenType::ELSE },
+        TokenContainer::ContainerContent{ "for", TokenType::FOR },
+        TokenContainer::ContainerContent{ "while", TokenType::WHILE },
+        TokenContainer::ContainerContent{ "continue", TokenType::CONTINUE },
+        TokenContainer::ContainerContent{ "break", TokenType::BREAK},
+    };
+
 
 	std::string Input { "\0" };
     std::string Operations { "+-/*()><=&|!{}%," };
-    std::size_t Position { NULL }, Length { NULL };
-
-	TokenNode Tokens = TokenNode {};
-
     
-
+    std::size_t Position { NULL }, 
+                Length { NULL };
 };
 
 /*        

@@ -135,6 +135,7 @@
     <ClInclude Include="BreakStatement.hh" />
     <ClInclude Include="ConditionExpression.hh" />
     <ClInclude Include="ContinueStatement.hh" />
+    <ClInclude Include="Debugger.hh" />
     <ClInclude Include="defs.hh" />
     <ClInclude Include="Expression.hh" />
     <ClInclude Include="ForStatement.hh" />

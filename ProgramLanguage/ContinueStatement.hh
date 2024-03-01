@@ -13,6 +13,6 @@ public:
 
 	void execute() override
 	{
-        throw std::runtime_error("Break");
+        throw std::runtime_error("Continue");
 	}
 };

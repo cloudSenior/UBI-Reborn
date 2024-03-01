@@ -19,7 +19,7 @@ public:
 
     Value* eval() override
     {
-        if (typeid(expression1) == typeid(StringValue)) 
+        if (typeid(expression1->eval()).name()  == typeid(StringValue).name()) 
         {
             return stringEval();
         } 
@@ -50,24 +50,27 @@ private:
 
     Value* stringEval()
     {
-        std::string StrValue = expression1->eval()->asString(), 
-                    StrValue2 = expression2->eval()->asString();
-        double NumValue = expression2->eval()->asDouble();
+        Value* Expr1 { expression1->eval() };
+        Value* Expr2 { expression2->eval() };
 
         switch (operation) 
         {
             case '*': 
             {
+                double NumValue = Expr2->asDouble();
+                
                 std::string buffer;
-                for (std::size_t iter = 0; iter <= NumValue; ++iter) { 
-                    buffer += StrValue;
-                }
+                std::string data = Expr1->asString();
+                
+                for (std::size_t iter = 0; iter <= NumValue; ++iter) 
+                    buffer += data;
+                
                 return new StringValue(buffer);
             }
 
             case '+':
                 default:
-                    return new StringValue(StrValue + StrValue2);
+                    return new StringValue(Expr1->asString() + Expr2->asString());
         }
     }
 
