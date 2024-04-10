@@ -9,8 +9,8 @@ KEYWORD:
  4. continue/break
 
 MATCH OPERATION:
-  1. +
-  2. -
-  3. /
-  4. *
-  5. %
+  1.  +
+  2.  -
+  3.  /
+  4.  *
+  5.  %
